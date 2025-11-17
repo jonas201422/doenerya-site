@@ -51,24 +51,24 @@
         <section class="hero" aria-label="Signature Hero">
             <div class="hero-media" role="presentation"></div>
             <div class="hero-overlay"></div>
-            <div class="container hero-content">
+            <div class="container hero-content" data-reveal>
                 <p class="eyebrow">🔥 Frisch gegrillt seit 2004</p>
                 <h1>Feuer. Genuss. <span>DÖNERYA</span>.</h1>
                 <p class="lead">Moderne Dönerkunst trifft auf orientalische Eleganz. Handgemachte Fladen, hausgemachte Saucen und Flammen vom Buchenholzgrill.</p>
                 <div class="hero-actions">
-                    <a class="btn primary" href="#menu">Speisekarte</a>
-                    <a class="btn secondary" href="#contact">Tisch reservieren</a>
+                    <a class="btn primary" href="#menu" data-reveal style="--delay: 0.1s;">Speisekarte</a>
+                    <a class="btn secondary" href="#contact" data-reveal style="--delay: 0.2s;">Tisch reservieren</a>
                 </div>
                 <div class="hero-stats">
-                    <div>
+                    <div data-reveal="scale" style="--delay: 0.1s;">
                         <strong>45+</strong>
                         <span>Signature Kreationen</span>
                     </div>
-                    <div>
+                    <div data-reveal="scale" style="--delay: 0.2s;">
                         <strong>100% Bio</strong>
                         <span>regionaler Gemüsepartner</span>
                     </div>
-                    <div>
+                    <div data-reveal="scale" style="--delay: 0.3s;">
                         <strong>4.9★</strong>
                         <span>aus 1.500 Bewertungen</span>
                     </div>
@@ -78,13 +78,13 @@
 
         <section class="section menu" id="menu" aria-label="Speisekarte">
             <div class="container">
-                <div class="section-header">
+                <div class="section-header" data-reveal>
                     <p class="eyebrow">Chef&apos;s Choice</p>
                     <h2>Unsere beliebtesten Kreationen</h2>
                     <p>Ausgewählte Signature-Gerichte, die DÖNERYA ausmachen. Perfekt portioniert, kunstvoll angerichtet und mit hausgemachten Toppings veredelt.</p>
                 </div>
                 <div class="menu-grid">
-                    <article class="menu-card">
+                    <article class="menu-card" data-reveal>
                         <img src="assets/menu-signature.jpg" alt="Signature Döner mit gegrilltem Fleisch" loading="lazy" />
                         <div class="menu-body">
                             <div>
@@ -97,7 +97,7 @@
                             </div>
                         </div>
                     </article>
-                    <article class="menu-card">
+                    <article class="menu-card" data-reveal style="--delay: 0.1s;">
                         <img src="assets/menu-veggie.jpg" alt="Veggie Bowl mit Halloumi und Gemüse" loading="lazy" />
                         <div class="menu-body">
                             <div>
@@ -110,7 +110,7 @@
                             </div>
                         </div>
                     </article>
-                    <article class="menu-card">
+                    <article class="menu-card" data-reveal style="--delay: 0.2s;">
                         <img src="assets/menu-wraps.jpg" alt="Wrap mit frischem Gemüse und Fleisch" loading="lazy" />
                         <div class="menu-body">
                             <div>
@@ -128,10 +128,10 @@
         </section>
 
         <section class="section split" id="experience">
-            <div class="split-media">
+            <div class="split-media" data-reveal>
                 <img src="assets/dining-room.jpg" alt="Modernes Restaurant Interieur" loading="lazy" />
             </div>
-            <div class="split-content">
+            <div class="split-content" data-reveal style="--delay: 0.15s;">
                 <p class="eyebrow">DÖNER.REDEFINED</p>
                 <h2>Urbaner Charme trifft handwerkliches Feuer</h2>
                 <ul>
@@ -145,20 +145,20 @@
 
         <section class="section gallery" id="gallery" aria-label="Galerie">
             <div class="container">
-                <div class="section-header">
+                <div class="section-header" data-reveal>
                     <p class="eyebrow">Atmosphäre</p>
                     <h2>Ein Blick hinter die Kulissen</h2>
                 </div>
                 <div class="gallery-grid">
-                    <figure>
+                    <figure data-reveal>
                         <img src="assets/chef-platter.jpg" alt="Chef präsentiert verschiedene Döner" loading="lazy" />
                         <figcaption>Chef&apos;s Platter</figcaption>
                     </figure>
-                    <figure>
+                    <figure data-reveal style="--delay: 0.1s;">
                         <img src="assets/team.jpg" alt="Team bei der Vorbereitung" loading="lazy" />
                         <figcaption>Team Spirit</figcaption>
                     </figure>
-                    <figure>
+                    <figure data-reveal style="--delay: 0.2s;">
                         <img src="assets/menu-signature.jpg" alt="Nahaufnahme Signature Döner" loading="lazy" />
                         <figcaption>Signature Cut</figcaption>
                     </figure>
@@ -168,7 +168,7 @@
 
         <section class="section contact" id="contact">
             <div class="container contact-wrapper">
-                <div>
+                <div data-reveal>
                     <p class="eyebrow">Kontakt</p>
                     <h2>Reservierungen &amp; Catering</h2>
                     <p>Schreiben Sie uns für Events, Firmen-Caterings oder Gruppenreservierungen. Wir melden uns innerhalb von 24 Stunden.</p>
@@ -178,7 +178,7 @@
                         <p><strong>Adresse:</strong> Urban Street 12, 10115 Berlin</p>
                     </div>
                 </div>
-                <form class="contact-form" id="order">
+                <form class="contact-form" id="order" data-reveal style="--delay: 0.2s;">
                     <label>
                         Name
                         <input type="text" name="name" placeholder="Ihr Name" required />
@@ -225,6 +225,28 @@
             navToggle.classList.toggle('is-active');
         });
         document.getElementById('year').textContent = new Date().getFullYear();
+
+        const revealElements = document.querySelectorAll('[data-reveal]');
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+        if (revealElements.length) {
+            if (prefersReducedMotion.matches) {
+                revealElements.forEach((el) => el.classList.add('is-visible'));
+            } else {
+                const revealObserver = new IntersectionObserver(
+                    (entries, observer) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('is-visible');
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    },
+                    { threshold: 0.2 }
+                );
+                revealElements.forEach((el) => revealObserver.observe(el));
+            }
+        }
     </script>
 </body>
 </html>
